@@ -87,9 +87,16 @@ M.wifi = function()
 	return result
 end
 
-M.datetime = function()
-	local datetime = os.date(" %H:%M   %Y-%m-%d   %A")
-	return datetime
+M.day = function()
+	return os.date(" %A")
+end
+
+M.time = function()
+	return os.date(" %H:%M")
+end
+
+M.date = function()
+	return os.date(" %Y-%m-%d")
 end
 
 return M
