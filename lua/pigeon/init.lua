@@ -86,6 +86,9 @@ M.wifi = function()
 
 	local result = connection .. " " .. signal_speed
 	return result
+M.datetime = function()
+  local datetime = os.date(" %Y-%m-%d   %A")
+  return datetime
 end
 
 return M
