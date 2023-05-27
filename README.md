@@ -2,7 +2,9 @@
 
 This is a plugin that shows different module status on the status line or winbar.
 
-![Illustration](/image.png)
+![](/image.png)
+***
+![](/image-thin.png)
 
 ## Modules
 
