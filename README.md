@@ -2,6 +2,8 @@
 
 This is a plugin that shows different module status on the status line or winbar.
 
+![Illustration](/image.png)
+
 ## Modules
 
 *   \[x] battery
@@ -9,7 +11,7 @@ This is a plugin that shows different module status on the status line or winbar
 *   \[x] internet
     *   \[x] wifi connection
     *   \[ ] ethernet connection
-    *   \[!] internet connection speed
+    *   \[ ] internet connection speed
 *   \[x] date
     *   Current date
 *   \[x] time
@@ -22,5 +24,3 @@ This is a plugin that shows different module status on the status line or winbar
     *   System memory usage
 *   \[ ] updates
     *   Neovim plugins updates
-
-![Illustration](/image.png)
