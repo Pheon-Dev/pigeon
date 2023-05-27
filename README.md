@@ -2,9 +2,42 @@
 
 This is a plugin that shows different module status on the status line or winbar.
 
-![](/image.png)
-***
 ![](/image-thin.png)
+
+***
+
+## Installation
+
+```lua
+    { "Pheon-Dev/pigeon" }
+```
+
+## Usage
+
+```lua
+-- Example in lualine
+    ...
+    sections = {
+      ...
+      lualine_x = {
+          {
+            function()
+              local datetime = require("pigeon").datetime()
+              local battery = require("pigeon").battery()
+              local wifi = require("pigeon").wifi()
+              local result = datetime .. battery .. wifi
+              return result
+            end,
+          }
+      },
+      ...
+    },
+    ...
+```
+
+***
+
+![](/image.png)
 
 ## Modules
 
