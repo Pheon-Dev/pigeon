@@ -71,17 +71,17 @@ M.wifi = function()
 
 	local signal_speed = ""
 
-	local function fetch_signal_speed()
-		local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
-		if signal and #signal > 0 then
-			local speed = math.floor(tonumber(signal[1]) / 1)
-			signal_speed = speed .. " dBm"
-		else
-			signal_speed = "N/A"
-		end
-	end
-
-	fetch_signal_speed()
+	-- local function fetch_signal_speed()
+	-- 	local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
+	-- 	if signal and #signal > 0 then
+	-- 		local speed = math.floor(tonumber(signal[1]) / 1)
+	-- 		signal_speed = speed .. " dBm"
+	-- 	else
+	-- 		signal_speed = "N/A"
+	-- 	end
+	-- end
+	--
+	-- fetch_signal_speed()
 
 	local result = connection .. " " .. signal_speed
 	return result
