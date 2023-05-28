@@ -1,12 +1,16 @@
-local config = require("pigeon.config")
+local internet = require("pigeon.config").options.internet
 
 local M = {}
 
 M.wifi_status = function()
-	local result = vim.fn.system('ping -c 1 8.8.8.8 > /dev/null 2>&1 && echo "󰤪 " || echo "󰤫 "')
+	local result = vim.fn.system('ping -c 1 8.8.8.8 > /dev/null 2>&1 && echo "true" || echo "false"')
 	result = result:gsub("\n", "")
-
-	return result
+  result = tostring(result)
+  if result == "false" then
+    return internet.wifi.icons.disconnected
+  else
+    return internet.wifi.icons.connected
+  end
 end
 
 M.signal_speed = function()
