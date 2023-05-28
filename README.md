@@ -86,7 +86,7 @@ require("pigeon").setup({
     updates = {
         pretext = "",
         posttext = "",
-        icon = "",
+        icon = "󱌖",
     },
     datetime = {
         time = {
@@ -135,8 +135,8 @@ require("pigeon").setup({
         },
         ethernet = {
             icons = {
-                connected = "󰇧 ",
-                disconnected = "󰇧 ",
+				connected = "󰞉 ",
+				disconnected = "󰕑 ",
             },
         },
         wifi = {

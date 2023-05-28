@@ -5,24 +5,30 @@ local M = {}
 M.wifi_status = function()
 	local result = vim.fn.system('ping -c 1 8.8.8.8 > /dev/null 2>&1 && echo "true" || echo "false"')
 	result = result:gsub("\n", "")
-  result = tostring(result)
-  if result == "false" then
-    return internet.wifi.icons.disconnected
-  else
-    return internet.wifi.icons.connected
-  end
+	result = tostring(result)
+	if result == "false" then
+		return internet.wifi.icons.disconnected
+	else
+		return internet.wifi.icons.connected
+	end
 end
 
 M.signal_speed = function()
 	local result = ""
+	local speed = 0
 
 	local function fetch_signal_speed()
 		local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
 		if signal and #signal > 0 then
-			local speed = math.floor(tonumber(signal[1]) / 1)
-			result = speed .. " dBm"
+			if internet.signal.unit == "mb/s" then
+				speed = math.floor(tonumber(signal[1]) / 1000)
+			end
+			if internet.signal.unit == "dBm" then
+				speed = math.floor(tonumber(signal[1]) / 1)
+			end
+			result = speed .. internet.signal.unit
 		else
-			result = "N/A"
+			result = "󰪎"
 		end
 	end
 
