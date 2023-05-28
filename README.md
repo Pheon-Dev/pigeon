@@ -78,6 +78,7 @@ This is a plugin that shows different module status on the status line or winbar
     *   Neovim plugins updates
 
 ## Configuration
+
 ```lua
 require("pigeon").setup({
     os = "linux", -- windows, osx
@@ -87,17 +88,20 @@ require("pigeon").setup({
         posttext = "",
         icon = "",
     },
-    time = {
-        format = "%H:%M",
-        icon = "",
-    },
-    day = {
-        format = "%A",
-        icon = "",
-    },
-    date = {
-        format = "%Y-%m-%d",
-        icon = "",
+    datetime = {
+        time = {
+          format = "%H:%M",
+          posttext = "hrs",
+          icon = "",
+        },
+        day = {
+          format = "%A",
+          icon = "",
+        },
+        date = {
+          format = "%Y-%m-%d",
+          icon = "",
+        },
     },
     battery = {
         show_percentage = true,
@@ -164,4 +168,3 @@ require("pigeon").setup({
     },
 })
 ```
-
