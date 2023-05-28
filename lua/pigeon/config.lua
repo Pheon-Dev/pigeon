@@ -1,7 +1,6 @@
-local M = {}
+local M = { options = {} }
 
----@class PigeonOptions
-M.defaults = {
+local defaults = {
 	updates = {
 		enabled = true,
 		pretext = "",
@@ -92,11 +91,8 @@ M.defaults = {
 	},
 }
 
----@type PigeonOptions
-M.options = {}
-
-M.setup = function(opts)
-	M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
+M.load = function(opts)
+	M.options = vim.tbl_deep_extend("force", defaults, opts or {})
 end
 
 return M
