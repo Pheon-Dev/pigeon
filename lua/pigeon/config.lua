@@ -42,6 +42,7 @@ local defaults = {
 				not_charging = { icon = "" },
 				full = { icon = "" },
 				unknown = { icon = "" },
+				percentage = { icon = " 󰏰" },
 			},
 		},
 	},
