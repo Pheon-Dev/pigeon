@@ -66,7 +66,7 @@ M.battery = function()
 end
 
 M.wifi = function()
-	local result = vim.fn.system('ping -c 1 8.8.8.8 > /dev/null 2>&1 && echo "  " || echo ""')
+	local result = vim.fn.system('ping -c 1 8.8.8.8 > /dev/null 2>&1 && echo "󰤪 " || echo "󰤫 "')
 	result = result:gsub("\n", "")
 
 	return result
