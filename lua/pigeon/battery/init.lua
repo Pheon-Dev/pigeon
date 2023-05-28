@@ -2,7 +2,7 @@ local config = require("pigeon.config")
 
 local M = {}
 
-function M.capacity()
+function M.battery_capacity()
 	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
 	local charge = tonumber(capacity)
 	local result = ""
@@ -64,7 +64,7 @@ function M.capacity()
 	return result
 end
 
-function M.charge()
+function M.battery_charge()
 	local result = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
 	result = result:gsub("\n", "")
 
