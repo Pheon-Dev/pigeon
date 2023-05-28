@@ -97,7 +97,6 @@ M.options = {}
 
 M.setup = function(opts)
 	M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
-	require("pigeon.modules").init()
 end
 
 return M

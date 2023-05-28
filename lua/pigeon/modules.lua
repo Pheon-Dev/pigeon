@@ -3,9 +3,7 @@ local config = require("pigeon.config")
 local M = {}
 
 function M.init()
-	if config.battery.enabled then
-		require("pigeon.battery").init()
-	end
+	require("pigeon.battery").init()
 end
 
 return M
