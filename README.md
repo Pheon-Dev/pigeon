@@ -59,23 +59,27 @@ This is a plugin that shows different module status on the status line or winbar
 ## Modules
 
 *   \[x] battery
-    *   power status for a laptop
+    *   \[x] capacity icon
+    *   \[x] charge percentage
+    *   \[x] status i.e charging, discharging
 *   \[x] internet
     *   \[x] wifi connection
     *   \[ ] ethernet connection
     *   \[x] internet connection speed
-*   \[x] date
-    *   Current date
-*   \[x] time
-    *   Current time
-*   \[x] day
-    *   Current day
+*   \[x] date and time
+    *   \[x] current date
+    *   \[x] current time
+    *   \[x] current day
 *   \[ ] cpu
     *   System processor usage
 *   \[ ] ram
     *   System memory usage
 *   \[ ] updates
     *   Neovim plugins updates
+*   \[ ] music
+    *   current music playing
+*   \[ ] volume
+    *   audio volume
 
 ## Configuration
 
