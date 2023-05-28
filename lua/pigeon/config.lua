@@ -1,29 +1,26 @@
 local M = { options = {} }
 
 local defaults = {
+	os = "linux", -- windows, osx
+	plugin_manager = "lazy", -- packer, paq, vim-plug
 	updates = {
-		enabled = true,
 		pretext = "",
 		posttext = "",
 		icon = "",
 	},
 	time = {
-		enabled = true,
 		format = "%H:%M",
 		icon = "",
 	},
 	day = {
-		enabled = true,
 		format = "%A",
 		icon = "",
 	},
 	date = {
-		enabled = true,
 		format = "%Y-%m-%d",
 		icon = "",
 	},
 	battery = {
-		enabled = true,
 		show_percentage = false,
 		view = {
 			charge = {
@@ -49,15 +46,16 @@ local defaults = {
 		},
 	},
 	internet = {
+		signal = {
+			unit = "dBm", -- dBm, mb/s
+		},
 		ethernet = {
-			enabled = true,
 			icons = {
 				connected = "󰇧 ",
 				disconnected = "󰇧 ",
 			},
 		},
 		wifi = {
-			enabled = true,
 			icons = {
 				connected = "󰤪",
 				disconnected = "󰤫",
@@ -65,29 +63,24 @@ local defaults = {
 		},
 	},
 	volume = {
-		enabled = true,
 		show_percentage = false,
-		icon = "",
+		icon = "󱄠",
 	},
 	temperature = {
-		enabled = true,
 		show_percentage = false,
-		icon = "",
+		icon = "",
 	},
 	storage = {
-		enabled = true,
 		show_percentage = false,
-		icon = "",
+		icon = "󱛟",
 	},
 	ram = {
-		enabled = true,
 		show_percentage = false,
-		icon = "",
+		icon = "󰍛",
 	},
 	cpu = {
-		enabled = true,
 		show_percentage = false,
-		icon = "",
+		icon = "󰻠",
 	},
 }
 
