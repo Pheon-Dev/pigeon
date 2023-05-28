@@ -16,17 +16,17 @@ This is a plugin that shows different module status on the status line or winbar
     local pigeon = require("pigeon")
 
     -- battery
-    local battery_capacity = require("pigeon.battery").battery_capacity
-    local battery_charge = require("pigeon.battery").battery_charge
+    local battery_capacity = require("pigeon.battery").battery_capacity()
+    local battery_charge = require("pigeon.battery").battery_charge()
 
     -- internet
-    local wifi_status = require("pigeon.internet").wifi_status
-    local signal_speed = require("pigeon.internet").signal_speed
+    local wifi_status = require("pigeon.internet").wifi_status()
+    local signal_speed = require("pigeon.internet").signal_speed()
 
     -- date and time
-    local current_date = require("pigeon.datetime").current_date
-    local current_day = require("pigeon.datetime").current_day
-    local current_time = require("pigeon.datetime").current_time
+    local current_date = require("pigeon.datetime").current_date()
+    local current_day = require("pigeon.datetime").current_day()
+    local current_time = require("pigeon.datetime").current_time()
 ```
 
 ## Usage
@@ -39,9 +39,9 @@ This is a plugin that shows different module status on the status line or winbar
       lualine_x = {
           {
             function()
-              local date = require("pigeon").current_date
-              local time = require("pigeon").current_time
-              local day = require("pigeon").current_day
+              local date = require("pigeon.datetime").current_date()
+              local time = require("pigeon.datetime").current_time()
+              local day = require("pigeon.datetime").current_day()
               local result = current_time .. current_date .. current_day
               return result
             end,
