@@ -4,8 +4,8 @@ local M = {}
 M.defaults = {
 	updates = {
 		enabled = true,
-    pretext = "",
-    posttext = "",
+		pretext = "",
+		posttext = "",
 		icon = "",
 	},
 	time = {
@@ -67,27 +67,27 @@ M.defaults = {
 	},
 	volume = {
 		enabled = true,
-    show_percentage = false,
+		show_percentage = false,
 		icon = "",
 	},
 	temperature = {
 		enabled = true,
-    show_percentage = false,
+		show_percentage = false,
 		icon = "",
 	},
 	storage = {
 		enabled = true,
-    show_percentage = false,
+		show_percentage = false,
 		icon = "",
 	},
 	ram = {
 		enabled = true,
-    show_percentage = false,
+		show_percentage = false,
 		icon = "",
 	},
 	cpu = {
 		enabled = true,
-    show_percentage = false,
+		show_percentage = false,
 		icon = "",
 	},
 }
@@ -96,8 +96,8 @@ M.defaults = {
 M.options = {}
 
 M.setup = function(opts)
-  M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
-  require("pigeon.modules").init()
+	M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
+	require("pigeon.modules").init()
 end
 
 return M

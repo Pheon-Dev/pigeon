@@ -2,7 +2,7 @@ local config = require("pigeon.config")
 
 local M = {}
 
-M.init = function()
+function M.init()
 	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
 	local charge = tonumber(capacity)
 	local result = ""
