@@ -1,7 +1,7 @@
 local M = { options = {} }
 
 local defaults = {
-  os = "linux",           -- windows, osx
+  os = "linux",            -- windows, osx
   plugin_manager = "lazy", -- packer, paq, vim-plug
   updates = {
     pretext = "",

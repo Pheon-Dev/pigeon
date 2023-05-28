@@ -81,7 +81,7 @@ function M.battery_status()
 	end
 	status_res = battery.view.status.unknown.icon
   if battery.show_status_text then
-    status_res = status_res .. " " .. result
+    status_res = result .. " " .. status_res
   end
   return status_res
 end
