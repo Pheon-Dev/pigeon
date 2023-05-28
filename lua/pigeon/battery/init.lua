@@ -79,7 +79,9 @@ function M.battery_status()
   if result == "Discharging" then
     status_res = battery.view.status.discharging.icon
   end
-  status_res = battery.view.status.unknown.icon
+  if result == "" then
+    status_res = battery.view.status.unknown.icon
+  end
   if battery.show_status_text then
     status_res = result .. status_res
   end
