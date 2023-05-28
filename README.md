@@ -105,6 +105,7 @@ require("pigeon").setup({
     },
     battery = {
         show_percentage = true,
+		show_status_text = true,
         view = {
             charge = {
                 zeros = { icon = " " },
@@ -122,9 +123,9 @@ require("pigeon").setup({
             status = {
                 charging = { icon = " 󱐋" },
                 discharging = { icon = " 󱐌" },
-                not_charging = { icon = " " },
-                full = { icon = " " },
-                unknown = { icon = " " },
+                not_charging = { icon = " " },
+                full = { icon = " ✔" },
+                unknown = { icon = " " },
                 percentage = { icon = " 󰏰" },
             },
         },

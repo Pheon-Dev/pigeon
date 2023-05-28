@@ -64,21 +64,26 @@ end
 function M.battery_status()
 	local status = vim.fn.system("cat /sys/class/power_supply/BAT0/status")
 	local result = status:gsub("\n", "")
-  result = tostring(result)
+	result = tostring(result)
+	local status_res = ""
 
 	if result == "Charging" then
-		return result .. battery.view.status.charging.icon
+		status_res = battery.view.status.charging.icon
 	end
 	if result == "Not charging" then
-		return result .. battery.view.status.not_charging.icon
+		status_res = battery.view.status.not_charging.icon
 	end
 	if result == "Full" then
-		return result .. battery.view.status.full.icon
+		status_res = battery.view.status.full.icon
 	end
 	if result == "Discharging" then
-		return result .. battery.view.status.discharging.icon
+		status_res = battery.view.status.discharging.icon
 	end
-	return result
+	status_res = battery.view.status.unknown.icon
+  if battery.show_status_text then
+    status_res = status_res .. " " .. result
+  end
+  return status_res
 end
 
 function M.battery_charge()

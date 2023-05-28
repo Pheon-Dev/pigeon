@@ -24,7 +24,8 @@ local defaults = {
     },
   },
   battery = {
-    show_percentage = false,
+    show_percentage = true,
+    show_status_text = true,
     view = {
       charge = {
         zeros = { icon = "" },
@@ -40,11 +41,11 @@ local defaults = {
         hundred = { icon = "" },
       },
       status = {
-        charging = { icon = "󱐋" },
-        discharging = { icon = "󱐌" },
-        not_charging = { icon = "" },
-        full = { icon = "" },
-        unknown = { icon = "" },
+        charging = { icon = " 󱐋" },
+        discharging = { icon = " 󱐌" },
+        not_charging = { icon = " " },
+        full = { icon = " ✔" },
+        unknown = { icon = " " },
         percentage = { icon = " 󰏰" },
       },
     },
