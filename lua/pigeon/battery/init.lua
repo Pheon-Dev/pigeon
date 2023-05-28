@@ -80,10 +80,10 @@ function M.battery_status()
 		status_res = battery.view.status.discharging.icon
 	end
 	status_res = battery.view.status.unknown.icon
-  if battery.show_status_text then
-    status_res = result .. " " .. status_res
-  end
-  return status_res
+	if battery.show_status_text then
+		status_res = " " .. result .. status_res
+	end
+	return status_res
 end
 
 function M.battery_charge()
