@@ -61,9 +61,29 @@ function M.battery_capacity()
 	return result
 end
 
+function M.battery_status()
+	local status = vim.fn.system("cat /sys/class/power_supply/BAT0/status")
+	local result = status:gsub("\n", "")
+  result = tostring(result)
+
+	if result == "Charging" then
+		return result .. battery.view.status.charging.icon
+	end
+	if result == "Not charging" then
+		return result .. battery.view.status.not_charging.icon
+	end
+	if result == "Full" then
+		return result .. battery.view.status.full.icon
+	end
+	if result == "Discharging" then
+		return result .. battery.view.status.discharging.icon
+	end
+	return result
+end
+
 function M.battery_charge()
-	local result = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
-	result = result:gsub("\n", "")
+	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
+	local result = capacity:gsub("\n", "")
 
 	if battery.show_percentage then
 		return result .. battery.view.status.percentage.icon

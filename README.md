@@ -131,7 +131,7 @@ require("pigeon").setup({
     },
     internet = {
         signal = {
-            unit = "dBm", -- dBm, Mbps, Kbps, Gbps, Tbps
+            unit = "mbps", -- dBm, mbps | mb/s | Mb/s | MB/s | Mbps | MBps, Kbps, Gbps, Tbps
         },
         ethernet = {
             icons = {
