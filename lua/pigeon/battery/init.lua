@@ -66,7 +66,7 @@ function M.battery_charge()
 	result = result:gsub("\n", "")
 
 	if battery.show_percentage then
-		return result .. battery.view.status.percentage
+		return result .. battery.view.status.percentage.icon
 	end
 	return result
 end
