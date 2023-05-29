@@ -1,6 +1,9 @@
 # Pigeon
 
-This is a plugin that shows different module status on the status line or winbar.
+This plugin adds to the current statusline and winbar by providing modules such as 
+wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
+
+> This plugin is currently in it's experimental stages. Expect some breaking changes.
 
 ![](/image-thin.png)
 
@@ -12,23 +15,42 @@ This is a plugin that shows different module status on the status line or winbar
     { "Pheon-Dev/pigeon" }
 ```
 
-```lua
-    local pigeon = require("pigeon")
+## Initialisation
+> Check below for configuration
 
+```lua
+    local config = {
+        enabled = true,
+        os = "linux", -- windows, osx
+        plugin_manager = "lazy", -- packer, paq, vim-plug
+        callbacks = {
+            killing_pigeon = nil,
+            respawning_pigeon = nil,
+        },
+        ...
+    }
+
+    require("pigeon").setup(config)
+
+```
+
+## Available Modules
+
+```lua
     -- battery
-    local battery_capacity = require("pigeon.battery").battery_capacity()
-    local battery_charge = require("pigeon.battery").battery_charge()
-    local battery_status = require("pigeon.battery").battery_status()
+    require("pigeon.battery").battery_capacity()
+    require("pigeon.battery").battery_charge()
+    require("pigeon.battery").battery_status()
 
     -- internet
-    local wifi_status = require("pigeon.internet").wifi_status()
-    local wifi_essid = require("pigeon.internet").wifi_essid()
-    local bit_rate = require("pigeon.internet").bit_rate()
+    require("pigeon.internet").wifi_status()
+    require("pigeon.internet").wifi_essid()
+    require("pigeon.internet").bit_rate()
 
     -- date and time
-    local current_date = require("pigeon.datetime").current_date()
-    local current_day = require("pigeon.datetime").current_day()
-    local current_time = require("pigeon.datetime").current_time()
+    require("pigeon.datetime").current_date()
+    require("pigeon.datetime").current_day()
+    require("pigeon.datetime").current_time()
 ```
 
 ## Usage
