@@ -14,8 +14,4 @@ M.current_date = function()
 	return datetime.date.icon .. os.date(datetime.date.format)
 end
 
-if require("pigeon.config").options.enabled then
-	return M
-else
-	print("󱗆 pigeon datetime module disabled")
-end
+return M
