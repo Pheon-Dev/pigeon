@@ -30,7 +30,10 @@ end
 M.setup = function(opts)
 	vim.validate({ opts = { opts, "table", true } })
 	config.load(opts)
-  opts.enabled = pigeon_feeding
 end
 
-return M
+if pigeon_feeding then
+	return M
+else
+	print("pigeon not feeding")
+end
