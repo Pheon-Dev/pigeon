@@ -13,7 +13,7 @@ M.wifi_status = function()
 	end
 end
 
-M.signal_speed = function()
+M.bit_rate = function()
 	local result = ""
 	local unit = internet.signal.unit
 
