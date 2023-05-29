@@ -75,7 +75,13 @@ function M.battery_charging()
 		" ",
 		" ",
 	}
-	return anim[os.date("%s") % #anim + 1]
+	local status = vim.fn.system("cat /sys/class/power_supply/BAT0/status")
+	local result = status:gsub("\n", "")
+	result = tostring(result)
+
+	if result == "Charging" then
+		return anim[os.date("%s") % #anim + 1]
+	end
 end
 
 function M.battery_status()
