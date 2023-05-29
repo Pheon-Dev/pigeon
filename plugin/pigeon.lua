@@ -4,7 +4,7 @@ end
 
 vim.g.loaded_pigeon = true
 
-local command = vim.apu.nvim_create_user_command
+local command = vim.api.nvim_create_user_command
 local config = require("pigeon.config")
 
 command("PigeonToggle", function()
