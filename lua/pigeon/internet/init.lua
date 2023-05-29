@@ -15,29 +15,11 @@ end
 
 M.signal_speed = function()
 	local result = ""
-	local speed = 0
 	local unit = internet.signal.unit
 
 	local function fetch_signal_speed()
 		local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
-		if signal and #signal > 0 then
-			if
-				unit == "Mbps"
-				or unit == "MB/s"
-				or unit == "MBps"
-				or unit == "mbps"
-				or unit == "mb/s"
-				or unit == "Mb/s"
-			then
-				speed = math.floor(tonumber(signal[1]) / 1000)
-			end
-			if unit == "dBm" or unit == "dbm" then
-				speed = math.floor(tonumber(signal[1]) / 1)
-			end
-			result = speed .. " " .. unit
-		else
-			result = "󰪎"
-		end
+		result = tonumber(signal[1]) .. " " .. unit
 	end
 
 	fetch_signal_speed()

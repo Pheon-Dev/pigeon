@@ -133,7 +133,7 @@ require("pigeon").setup({
                 charging = { icon = " 󱐋" },
                 discharging = { icon = " 󱐌" },
                 not_charging = { icon = " " },
-                full = { icon = " ✔" },
+                full = { icon = " ✔ " },
                 unknown = { icon = " " },
                 percentage = { icon = " 󰏰" },
             },
@@ -141,7 +141,7 @@ require("pigeon").setup({
     },
     internet = {
         signal = {
-            unit = "mbps", -- dBm, mbps | mb/s | Mb/s | MB/s | Mbps | MBps, Kbps, Gbps, Tbps
+			unit = "mbps", -- mbps | mb/s | Mb/s | MB/s | Mbps | MBps
         },
         ethernet = {
             icons = {

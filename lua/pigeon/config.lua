@@ -57,7 +57,7 @@ local defaults = {
 	},
 	internet = {
 		signal = {
-			unit = "mbps", -- dBm, mbps | mb/s | Mb/s | MB/s | Mbps | MBps, Kbps, Gbps, Tbps
+			unit = "mbps", -- mbps | mb/s | Mb/s | MB/s | Mbps | MBps
 		},
 		ethernet = {
 			icons = {
