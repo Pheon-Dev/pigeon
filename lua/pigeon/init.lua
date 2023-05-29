@@ -32,8 +32,4 @@ M.setup = function(opts)
 	config.load(opts)
 end
 
-if pigeon_feeding then
-	return M
-else
-	print("pigeon not feeding")
-end
+return M

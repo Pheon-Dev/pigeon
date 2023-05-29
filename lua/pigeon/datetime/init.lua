@@ -1,5 +1,4 @@
 local datetime = require("pigeon.config").options.datetime
-local config = require("pigeon.config")
 
 local M = {}
 
@@ -15,7 +14,7 @@ M.current_date = function()
 	return datetime.date.icon .. os.date(datetime.date.format)
 end
 
-if config.options.enabled then
+if require("pigeon.config").options.enabled then
 	return M
 else
 	print("󱗆 pigeon datetime module disabled")
