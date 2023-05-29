@@ -1,7 +1,7 @@
 local M = { options = {} }
 
 local defaults = {
-	enabled = nil,
+	enabled = true,
 	os = "linux", -- windows, osx
 	plugin_manager = "lazy", -- packer, paq, vim-plug
 	callbacks = {

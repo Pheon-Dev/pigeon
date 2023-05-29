@@ -9,6 +9,7 @@ local config = require("pigeon.config")
 
 command("PigeonToggle", function()
 	require("pigeon").toggle()
+	print(config.options.enabled)
 end, {})
 
 if config.options.enabled then
