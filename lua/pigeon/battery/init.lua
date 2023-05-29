@@ -3,30 +3,31 @@ local battery = require("pigeon.config").options.battery
 local M = {}
 
 function M.battery_capacity()
-	local anim = {
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-		" ",
-	}
 	local status = vim.fn.system("cat /sys/class/power_supply/BAT0/status")
 	local result = status:gsub("\n", "")
+	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
+	local charge = tonumber(capacity)
+	local icon = battery.view.charge
+
+	local anim = {
+		icon.zeros.icon,
+		icon.tens.icon,
+		icon.twenties.icon,
+		icon.thirties.icon,
+		icon.forties.icon,
+		icon.fifties.icon,
+		icon.sixties.icon,
+		icon.seventies.icon,
+		icon.eighties.icon,
+		icon.nineties.icon,
+		icon.hundred.icon,
+	}
+
 	result = tostring(result)
 
 	if result == "Charging" then
 		return anim[os.date("%s") % #anim + 1]
 	end
-
-	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
-	local charge = tonumber(capacity)
-	local icon = battery.view.charge
 	result = ""
 
 	if charge >= 0 and charge < 10 then
