@@ -15,8 +15,7 @@ end
 
 M.connected_network = function()
 	local result = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
-	result = result:gsub("\n", "")
-	result = tostring(result)
+	result = tostring(result[2])
 
 	return result
 end
