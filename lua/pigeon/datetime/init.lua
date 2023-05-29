@@ -1,4 +1,6 @@
 local datetime = require("pigeon.config").options.datetime
+local status = require("pigeon.config").options.enabled
+print(status)
 
 local M = {}
 
