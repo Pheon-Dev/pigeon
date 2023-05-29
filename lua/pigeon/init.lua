@@ -19,10 +19,12 @@ end
 function M.toggle()
 	if pigeon_feeding then
 		M.kill()
-		print("󱗆 pigeon killed: " .. status)
+		print("󱗆 pigeon killed")
+    print(status)
 	else
 		M.respawn()
-		print("󱗆 pigeon respawned: " .. status)
+		print("󱗆 pigeon respawned")
+    print(status)
 	end
 end
 
