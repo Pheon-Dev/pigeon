@@ -1,5 +1,5 @@
 local datetime = require("pigeon.config").options.datetime
-
+local pigeon_feeding = require("pigeon.config").enabled
 local M = {}
 
 M.current_day = function()
@@ -14,4 +14,6 @@ M.current_date = function()
 	return datetime.date.icon .. os.date(datetime.date.format)
 end
 
-return M
+if pigeon_feeding then
+	return M
+end

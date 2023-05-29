@@ -1,4 +1,5 @@
 local internet = require("pigeon.config").options.internet
+local pigeon_feeding = require("pigeon.config").enabled
 
 local M = {}
 
@@ -45,4 +46,6 @@ M.signal_speed = function()
 	return result
 end
 
-return M
+if pigeon_feeding then
+	return M
+end
