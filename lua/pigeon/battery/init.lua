@@ -1,5 +1,5 @@
 local battery = require("pigeon.config").options.battery
-local pigeon_feeding = require("pigeon.config").enabled
+local pigeon_feeding = require("pigeon.config").options.enabled
 
 local M = {}
 

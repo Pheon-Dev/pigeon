@@ -1,5 +1,5 @@
 local datetime = require("pigeon.config").options.datetime
-local pigeon_feeding = require("pigeon.config").enabled
+local pigeon_feeding = require("pigeon.config").options.enabled
 local M = {}
 
 M.current_day = function()

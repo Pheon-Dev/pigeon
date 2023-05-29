@@ -1,5 +1,5 @@
 local internet = require("pigeon.config").options.internet
-local pigeon_feeding = require("pigeon.config").enabled
+local pigeon_feeding = require("pigeon.config").options.enabled
 
 local M = {}
 
