@@ -13,7 +13,7 @@ M.wifi_status = function()
 	end
 end
 
-M.connected_network = function()
+M.wifi_essid = function()
 	local result = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
 	result = tostring(result[2])
 

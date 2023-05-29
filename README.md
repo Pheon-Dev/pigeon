@@ -18,10 +18,12 @@ This is a plugin that shows different module status on the status line or winbar
     -- battery
     local battery_capacity = require("pigeon.battery").battery_capacity()
     local battery_charge = require("pigeon.battery").battery_charge()
+    local battery_status = require("pigeon.battery").battery_status()
 
     -- internet
     local wifi_status = require("pigeon.internet").wifi_status()
-    local signal_speed = require("pigeon.internet").signal_speed()
+    local wifi_essid = require("pigeon.internet").wifi_essid()
+    local bit_rate = require("pigeon.internet").bit_rate()
 
     -- date and time
     local current_date = require("pigeon.datetime").current_date()

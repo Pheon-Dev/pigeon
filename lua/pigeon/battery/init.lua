@@ -9,7 +9,7 @@ function M.battery_capacity()
 	local charge = tonumber(capacity)
 	local icon = battery.view.charge
 
-	local anim = {
+	local icons = {
 		icon.zeros.icon,
 		icon.tens.icon,
 		icon.twenties.icon,
@@ -26,7 +26,7 @@ function M.battery_capacity()
 	result = tostring(result)
 
 	if result == "Charging" then
-		return anim[os.date("%s") % #anim + 1]
+		return icons[os.date("%s") % #icons + 1]
 	end
 	result = ""
 
