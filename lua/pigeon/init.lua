@@ -1,4 +1,5 @@
 local config = require("pigeon.config")
+local status = require("pigeon.config").options.enabled
 local callback = require("pigeon.utils.data").do_callback
 local pigeon_feeding
 
@@ -18,10 +19,10 @@ end
 function M.toggle()
 	if pigeon_feeding then
 		M.kill()
-		print("󱗆 pigeon killed")
+		print("󱗆 pigeon killed: " .. status)
 	else
 		M.respawn()
-		print("󱗆 pigeon respawned")
+		print("󱗆 pigeon respawned: " .. status)
 	end
 end
 
