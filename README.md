@@ -109,7 +109,12 @@ sections = {
 * `PigeonToggleDay`: Toggle the day submodule
 
 ```lua
-vim.keymap.set("n", "<leader>p", ":PigeonToggle<CR>", { silent = true })
+local map = vim.api.nvim_set_keymap
+map("n", "<leader>pp", ":PigeonToggle<CR>", { silent = true, desc = "Toggle All Pigeon Modules" })
+map("n", "<leader>pd", ":PigeonToggleDateTime<CR>", { silent = true, desc = "Toggle Date and Time Module" })
+map("n", "<leader>pi", ":PigeonToggleInternet<CR>", { silent = true, desc = "Toggle Internet Module" })
+map("n", "<leader>pb", ":PigeonToggleBattery<CR>", { silent = true, desc = "Toggle Battery Module" })
+...
 ```
 
 ## Modules
