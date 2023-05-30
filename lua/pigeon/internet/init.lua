@@ -31,7 +31,7 @@ M.bit_rate = function()
 		local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
 		if signal and #signal > 0 then
 			result = tonumber(signal[1]) .. " " .. unit
-		elseif wifi_state == "off" then
+		else
 			result = " 󰪎"
 		end
 	end
