@@ -5,7 +5,7 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 
 > This plugin is currently in it's experimental stages. Expect some breaking changes.
 
-![](/image-thin.png)
+![](/pigeon.png)
 
 ***
 
@@ -77,8 +77,6 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 ```
 
 ***
-
-![](/image.png)
 
 ## Modules
 
