@@ -9,6 +9,7 @@ local config = require("pigeon.config")
 
 command("PigeonToggleBattery", function()
 	config.options.battery.enabled = not config.options.battery.enabled
+  print(config.options.battery.enabled)
 end, {})
 
 command("PigeonToggle", function()

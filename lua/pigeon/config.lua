@@ -29,8 +29,8 @@ local defaults = {
     },
   },
   battery = {
+    enabled = nil,
     show_percentage = true,
-    enabled = true,
     show_status_text = true,
     view = {
       charge = {
