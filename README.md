@@ -202,3 +202,6 @@ require("pigeon").setup({
     },
 })
 ```
+
+## Contributions
+- PRs, Issues from contributors are welcome
