@@ -63,11 +63,18 @@ sections = {
       lualine_x = {
           {
             function()
-              local date = require("pigeon.datetime").current_date()
-              local time = require("pigeon.datetime").current_time()
-              local day = require("pigeon.datetime").current_day()
-              local result = current_time .. current_date .. current_day
-              return result
+                local enabled = require("pigeon.config").options.battery.enabled
+                local battery = require("pigeon.battery")
+
+                local capacity = battery.battery_capacity()
+                local charge = battery.battery_charge()
+                local status = battery.battery_status()
+
+                if enabled then
+                  return status .. capacity .. charge
+                else
+                  return ""
+                end
             end,
           }
       },
@@ -81,6 +88,25 @@ sections = {
 ## Commands
 
 * `PigeonToggle`: Toggle the entire plugin by either killing the pigeon or respawning it
+
+### Battery Module
+* `PigeonToggleBattery`: Toggle the battery modules and its submodules
+* `PigeonToggleBatteryStatus`: Toggle the battery status submodule
+* `PigeonToggleBatteryCapacity`: Toggle the battery capacity icon submodule
+* `PigeonToggleBatteryCharge`: Toggle the battery charge and it's percentage submodule
+
+### Internet Module
+* `PigeonToggleInternet`: Toggle the internet module and its submodules
+* `PigeonToggleEthernet`: Toggle the ethernet submodule
+* `PigeonToggleWifi`: Toggle the wifi icon submodule
+* `PigeonToggleBitRate`: Toggle the bitrate submodule
+* `PigeonToggleEssid`: Toggle the ESSID submodule(wifi name)
+
+### Date and Time Module
+* `PigeonToggleDateTime`: Toggle the date and time modules and its submodules
+* `PigeonToggleDate`: Toggle the date submodule
+* `PigeonToggleTime`: Toggle the time submodule
+* `PigeonToggleDay`: Toggle the day submodule
 
 ```lua
 vim.keymap.set("n", "<leader>p", ":PigeonToggle<CR>", { silent = true })
