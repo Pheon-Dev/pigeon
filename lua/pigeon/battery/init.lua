@@ -153,12 +153,6 @@ function M.battery_charge()
 	return result
 end
 
-local command = vim.api.nvim_create_user_command
-
-command("PigeonToggleBattery", function()
-	battery.enabled = not battery.enabled
-end, {})
-
 if battery.enabled then
 	return M
 else
