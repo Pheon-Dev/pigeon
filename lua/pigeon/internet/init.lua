@@ -3,11 +3,11 @@ local command = vim.api.nvim_create_user_command
 
 local M = {}
 
-local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
-wifi_state = tostring(wifi_state[2])
-
 M.wifi_status = function()
+	local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
+	wifi_state = tostring(wifi_state[2])
 	local result
+
 	if wifi_state == "off" then
 		result = internet.wifi.icons.disconnected
 	else
@@ -18,8 +18,9 @@ M.wifi_status = function()
 end
 
 M.wifi_essid = function()
-	local result = wifi_state
-	return result
+	local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
+	wifi_state = tostring(wifi_state[2])
+	return wifi_state
 end
 
 M.bit_rate = function()
