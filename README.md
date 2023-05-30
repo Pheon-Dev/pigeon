@@ -10,27 +10,27 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 ***
 
 ## Installation
+### Lazy
 
 ```lua
-    { "Pheon-Dev/pigeon" }
-```
+    { 
+        "Pheon-Dev/pigeon",
+        event = "",
+        config = function()
+            local config = {
+                enabled = true,
+                os = "linux", -- windows, osx
+                plugin_manager = "lazy", -- packer, paq, vim-plug
+                callbacks = {
+                    killing_pigeon = nil,
+                    respawning_pigeon = nil,
+                },
+                ...
+            }
 
-## Initialisation
-> Check below for configuration
-
-```lua
-    local config = {
-        enabled = true,
-        os = "linux", -- windows, osx
-        plugin_manager = "lazy", -- packer, paq, vim-plug
-        callbacks = {
-            killing_pigeon = nil,
-            respawning_pigeon = nil,
-        },
-        ...
+            require("pigeon").setup(config)
+        end
     }
-
-    require("pigeon").setup(config)
 
 ```
 
@@ -78,6 +78,14 @@ sections = {
 
 ***
 
+## Commands
+
+* `PigeonToggle`: Toggle the entire plugin by either killing the pigeon or respawning it
+
+```lua
+vim.keymap.set("n", "<leader>p", ":PigeonToggle<CR>", { silent = true })
+```
+
 ## Modules
 
 *   \[x] battery
@@ -85,26 +93,34 @@ sections = {
     *   \[x] charge percentage
     *   \[x] status i.e charging, discharging
     *   \[x] animated battery icon while charging
+    *   \[ ] toggle
 *   \[x] internet
     *   \[x] wifi connection
         *   \[x] wifi essid
     *   \[ ] ethernet connection
     *   \[x] internet connection speed
         *   \[x] bit rate
+    *   \[ ] toggle
 *   \[x] date and time
     *   \[x] current date
     *   \[x] current time
     *   \[x] current day
+    *   \[ ] toggle
 *   \[ ] cpu
     *   System processor usage
+    *   \[ ] toggle
 *   \[ ] ram
     *   System memory usage
+    *   \[ ] toggle
 *   \[ ] updates
     *   Neovim plugins updates
+    *   \[ ] toggle
 *   \[ ] music
     *   current music playing
+    *   \[ ] toggle
 *   \[ ] volume
     *   audio volume
+    *   \[ ] toggle
 
 ## Configuration
 
