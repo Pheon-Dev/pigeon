@@ -1,11 +1,34 @@
 local battery = require("pigeon.config").options.battery
 
 local M = {}
+-- local cmd = 'acpi -b | grep -Po "[0-9]+%" | awk \'BEGIN { FS = "%" } { print $1 }\''
+local cmd
+if vim.fn.executable("acpi") == 1 then
+	cmd = 'acpi -b | grep -Po "[0-9]+%" | awk \'BEGIN { FS = "%" } { print $1 }\''
+else
+	cmd = 'pmset -g batt | grep -Eo "\\d+%"'
+end
+local capacity = vim.fn.system(cmd)
+capacity = capacity:gsub("\n", "")
+--
+-- local job_id = vim.fn.jobstart(cmd, {
+-- 	on_exit = function(_, code, output)
+-- 		if code == 0 and output and #output > 0 then
+-- 			local charge = string.match(output[1], "(%d+)")
+-- 			vim.g.battery_state = tonumber(charge)
+-- 		else
+-- 			vim.g.battery_state = nil
+-- 		end
+-- 	end,
+-- 	stdout_buffered = true,
+-- })
+-- vim.fn.jobwait({ job_id }, 0)
+-- vim.g.battery_state = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
+-- vim.g.battery_state = cmd
 
 function M.battery_capacity()
 	local status = vim.fn.system("cat /sys/class/power_supply/BAT0/status")
 	local result = status:gsub("\n", "")
-	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
 	local charge = tonumber(capacity)
 	local icon = battery.view.charge
 
@@ -115,8 +138,7 @@ function M.battery_status()
 end
 
 function M.battery_charge()
-	local capacity = vim.fn.system("cat /sys/class/power_supply/BAT0/capacity")
-	local result = capacity:gsub("\n", "")
+	local result = capacity
 
 	if battery.show_percentage then
 		return result .. battery.view.status.percentage.icon
