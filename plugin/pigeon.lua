@@ -8,6 +8,10 @@ local datetime = require("pigeon.config").options.datetime
 local internet = require("pigeon.config").options.internet
 local command = vim.api.nvim_create_user_command
 
+command("PigeonToggle", function()
+	require("pigeon").toggle()
+end, {})
+
 command("PigeonToggleInternet", function()
 	internet.enabled = not internet.enabled
 end, {})
