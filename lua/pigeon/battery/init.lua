@@ -124,6 +124,9 @@ function M.battery_status()
 	if result == "Full" then
 		status_res = battery.view.status.full.icon
 	end
+	if result == "Unknown" then
+		status_res = battery.view.status.unknown.icon
+	end
 	if result == "Discharging" then
 		local icons = {
 			battery.view.status.charging.icon,
@@ -131,8 +134,8 @@ function M.battery_status()
 		}
 		return icons[os.date("%s") % #icons + 1]
 	end
-	if result == "" then
-		status_res = battery.view.status.unknown.icon
+	if result == "Critical" then
+		status_res = battery.view.status.critical.icon
 	end
 	if battery.show_status_text then
 		status_res = result .. status_res

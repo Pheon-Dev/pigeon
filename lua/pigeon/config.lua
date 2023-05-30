@@ -48,9 +48,10 @@ local defaults = {
 			status = {
 				charging = { icon = " 󱐋" },
 				discharging = { icon = " 󱐌" },
-				not_charging = { icon = " " },
-				full = { icon = " ✔ " },
+				not_charging = { icon = " " },
+				full = { icon = "  " },
 				unknown = { icon = " " },
+				critical = { icon = " " },
 				percentage = { icon = " 󰏰" },
 			},
 		},
