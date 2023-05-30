@@ -2,49 +2,51 @@ local M = { options = {} }
 
 local defaults = {
   enabled = true,
-  os = "linux",            -- windows, osx
-  plugin_manager = "lazy", -- packer, paq, vim-plug
+  os = "linux",             -- windows, osx
+  plugin_manager = "lazy",  -- packer, paq, vim-plug
   callbacks = {
     killing_pigeon = nil,
     respawning_pigeon = nil,
   },
   updates = {
+    enabled = true,
     pretext = "",
     posttext = "",
-    icon = "󱌖",
+    icon = "󱌖 ",
   },
   datetime = {
+    enabled = true,
     time = {
       format = "%H:%M",
       posttext = "hrs",
-      icon = "",
+      icon = " ",
     },
     day = {
       format = "%A",
-      icon = "",
+      icon = " ",
     },
     date = {
       format = "%Y-%m-%d",
-      icon = "",
+      icon = " ",
     },
   },
   battery = {
-    enabled = nil,
+    enabled = true,
     show_percentage = true,
-    show_status_text = true,
+    show_status_text = false,
     view = {
       charge = {
-        zeros = { icon = "󰂎" },
-        tens = { icon = "󰁺" },
-        twenties = { icon = "󰁻" },
-        thirties = { icon = "󰁼" },
-        forties = { icon = "󰁽" },
-        fifties = { icon = "󰁾" },
-        sixties = { icon = "󰁿" },
-        seventies = { icon = "󰂀" },
-        eighties = { icon = "󰂁" },
-        nineties = { icon = "󰂂" },
-        hundred = { icon = "󰁹" },
+        zeros = { icon = "󰂎 " },
+        tens = { icon = "󰁺 " },
+        twenties = { icon = "󰁻 " },
+        thirties = { icon = "󰁼 " },
+        forties = { icon = "󰁽 " },
+        fifties = { icon = "󰁾 " },
+        sixties = { icon = "󰁿 " },
+        seventies = { icon = "󰂀 " },
+        eighties = { icon = "󰂁 " },
+        nineties = { icon = "󰂂 " },
+        hundred = { icon = "󰁹 " },
       },
       status = {
         charging = { icon = " 󱐋" },
@@ -58,6 +60,7 @@ local defaults = {
     },
   },
   internet = {
+    enabled = true,
     signal = {
       unit = "mbps", -- mbps | mb/s | Mb/s | MB/s | Mbps | MBps
     },
@@ -75,22 +78,27 @@ local defaults = {
     },
   },
   volume = {
+    enabled = true,
     show_percentage = false,
     icon = "󱄠",
   },
   temperature = {
+    enabled = true,
     show_percentage = false,
     icon = "",
   },
   storage = {
+    enabled = true,
     show_percentage = false,
     icon = "󱛟",
   },
   ram = {
+    enabled = true,
     show_percentage = false,
     icon = "󰍛",
   },
   cpu = {
+    enabled = true,
     show_percentage = false,
     icon = "󰻠",
   },

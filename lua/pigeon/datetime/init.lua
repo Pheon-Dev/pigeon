@@ -14,4 +14,15 @@ M.current_date = function()
 	return datetime.date.icon .. os.date(datetime.date.format)
 end
 
-return M
+local command = vim.api.nvim_create_user_command
+
+command("PigeonToggleDatetime", function()
+	datetime.enabled = not datetime.enabled
+end, {})
+
+if datetime.enabled then
+	print("󱗆 pigeon date and time is module enabled")
+	return M
+else
+	print("󱗆 pigeon date and time is module disabled")
+end

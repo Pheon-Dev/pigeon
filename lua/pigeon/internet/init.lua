@@ -55,4 +55,15 @@ M.bit_rate = function()
 	return result
 end
 
-return M
+local command = vim.api.nvim_create_user_command
+
+command("PigeonToggleInternet", function()
+	internet.enabled = not internet.enabled
+end, {})
+
+if internet.enabled then
+	print("󱗆 pigeon internet is module enabled")
+	return M
+else
+	print("󱗆 pigeon internet is module disabled")
+end
