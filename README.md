@@ -173,7 +173,7 @@ require("pigeon").setup({
             status = {
 				charging = { icon = " 󱐋" },
 				discharging = { icon = " 󱐌" },
-				not_charging = { icon = " " },
+				not_charging = { icon = "  " },
 				full = { icon = "  " },
 				unknown = { icon = " " },
 				critical = { icon = " " },
