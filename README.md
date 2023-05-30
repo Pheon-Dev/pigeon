@@ -126,98 +126,107 @@ vim.keymap.set("n", "<leader>p", ":PigeonToggle<CR>", { silent = true })
 
 ```lua
 require("pigeon").setup({
-	enabled = true,
-	os = "linux", -- windows, osx
-	plugin_manager = "lazy", -- packer, paq, vim-plug
-	callbacks = {
-		killing_pigeon = nil,
-		respawning_pigeon = nil,
-	},
-    updates = {
-        pretext = "",
-        posttext = "",
-        icon = "󱌖",
+  enabled = true,
+  os = "linux",             -- windows, osx
+  plugin_manager = "lazy",  -- packer, paq, vim-plug
+  callbacks = {
+    killing_pigeon = nil,
+    respawning_pigeon = nil,
+  },
+  updates = {
+    enabled = true,
+    pretext = "",
+    posttext = "",
+    icon = "󱌖 ",
+  },
+  datetime = {
+    enabled = true,
+    time = {
+      format = "%H:%M",
+      posttext = "hrs",
+      icon = " ",
     },
-    datetime = {
-        time = {
-          format = "%H:%M",
-          posttext = "hrs",
-          icon = "",
-        },
-        day = {
-          format = "%A",
-          icon = "",
-        },
-        date = {
-          format = "%Y-%m-%d",
-          icon = "",
-        },
+    day = {
+      format = "%A",
+      icon = " ",
     },
-    battery = {
-        show_percentage = true,
-		show_status_text = true,
-        view = {
-            charge = {
-				zeros = { icon = "󰂎" },
-				tens = { icon = "󰁺" },
-				twenties = { icon = "󰁻" },
-				thirties = { icon = "󰁼" },
-				forties = { icon = "󰁽" },
-				fifties = { icon = "󰁾" },
-				sixties = { icon = "󰁿" },
-				seventies = { icon = "󰂀" },
-				eighties = { icon = "󰂁" },
-				nineties = { icon = "󰂂" },
-				hundred = { icon = "󰁹" },
-            },
-            status = {
-				charging = { icon = " 󱐋" },
-				discharging = { icon = " 󱐌" },
-				not_charging = { icon = "  " },
-				full = { icon = "  " },
-				unknown = { icon = " " },
-				critical = { icon = " " },
-				percentage = { icon = " 󰏰" },
-            },
-        },
+    date = {
+      format = "%Y-%m-%d",
+      icon = " ",
     },
-    internet = {
-        signal = {
-			unit = "mbps", -- mbps | mb/s | Mb/s | MB/s | Mbps | MBps
-        },
-        ethernet = {
-            icons = {
-				connected = "󰞉 ",
-				disconnected = "󰕑 ",
-            },
-        },
-        wifi = {
-            icons = {
-                connected = "󰤪",
-                disconnected = "󰤫",
-            },
-        },
+  },
+  battery = {
+    enabled = true,
+    show_percentage = true,
+    show_status_text = false,
+    view = {
+      charge = {
+        zeros = { icon = "󰂎 " },
+        tens = { icon = "󰁺 " },
+        twenties = { icon = "󰁻 " },
+        thirties = { icon = "󰁼 " },
+        forties = { icon = "󰁽 " },
+        fifties = { icon = "󰁾 " },
+        sixties = { icon = "󰁿 " },
+        seventies = { icon = "󰂀 " },
+        eighties = { icon = "󰂁 " },
+        nineties = { icon = "󰂂 " },
+        hundred = { icon = "󰁹 " },
+      },
+      status = {
+        charging = { icon = " 󱐋" },
+        discharging = { icon = " 󱐌" },
+        not_charging = { icon = "  " },
+        full = { icon = "  " },
+        unknown = { icon = " " },
+        critical = { icon = " " },
+        percentage = { icon = " 󰏰" },
+      },
     },
-    volume = {
-        show_percentage = false,
-        icon = "󱄠",
+  },
+  internet = {
+    enabled = true,
+    signal = {
+      unit = "mbps", -- mbps | mb/s | Mb/s | MB/s | Mbps | MBps
     },
-    temperature = {
-        show_percentage = false,
-        icon = "",
+    ethernet = {
+      icons = {
+        connected = "󰞉 ",
+        disconnected = "󰕑 ",
+      },
     },
-    storage = {
-        show_percentage = false,
-        icon = "󱛟",
+    wifi = {
+      icons = {
+        connected = "󰤪",
+        disconnected = "󰤫",
+      },
     },
-    ram = {
-        show_percentage = false,
-        icon = "󰍛",
-    },
-    cpu = {
-        show_percentage = false,
-        icon = "󰻠",
-    },
+  },
+  volume = {
+    enabled = true,
+    show_percentage = false,
+    icon = "󱄠",
+  },
+  temperature = {
+    enabled = true,
+    show_percentage = false,
+    icon = "",
+  },
+  storage = {
+    enabled = true,
+    show_percentage = false,
+    icon = "󱛟",
+  },
+  ram = {
+    enabled = true,
+    show_percentage = false,
+    icon = "󰍛",
+  },
+  cpu = {
+    enabled = true,
+    show_percentage = false,
+    icon = "󰻠",
+  },
 })
 ```
 
