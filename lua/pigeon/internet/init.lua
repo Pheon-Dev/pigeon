@@ -29,7 +29,7 @@ M.bit_rate = function()
     if signal and #signal > 0 then
       result = tonumber(signal[1]) .. " " .. unit
     else
-      result = "󰪎"
+      result = " 󰪎"
     end
   end
 
