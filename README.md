@@ -37,29 +37,29 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 ## Available Modules
 
 ```lua
-    -- battery
-    require("pigeon.battery").battery_capacity()
-    require("pigeon.battery").battery_charge()
-    require("pigeon.battery").battery_status()
+-- battery
+require("pigeon.battery").battery_capacity()
+require("pigeon.battery").battery_charge()
+require("pigeon.battery").battery_status()
 
-    -- internet
-    require("pigeon.internet").wifi_status()
-    require("pigeon.internet").wifi_essid()
-    require("pigeon.internet").bit_rate()
+-- internet
+require("pigeon.internet").wifi_status()
+require("pigeon.internet").wifi_essid()
+require("pigeon.internet").bit_rate()
 
-    -- date and time
-    require("pigeon.datetime").current_date()
-    require("pigeon.datetime").current_day()
-    require("pigeon.datetime").current_time()
+-- date and time
+require("pigeon.datetime").current_date()
+require("pigeon.datetime").current_day()
+require("pigeon.datetime").current_time()
 ```
 
 ## Usage
 
 ```lua
 -- Example in lualine
-    ...
-    sections = {
-      ...
+...
+sections = {
+  ...
       lualine_x = {
           {
             function()
@@ -73,7 +73,7 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
       },
       ...
     },
-    ...
+...
 ```
 
 ***
@@ -84,10 +84,13 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
     *   \[x] capacity icon
     *   \[x] charge percentage
     *   \[x] status i.e charging, discharging
+    *   \[x] animated battery icon while charging
 *   \[x] internet
     *   \[x] wifi connection
+        *   \[x] wifi essid
     *   \[ ] ethernet connection
     *   \[x] internet connection speed
+        *   \[x] bit rate
 *   \[x] date and time
     *   \[x] current date
     *   \[x] current time
