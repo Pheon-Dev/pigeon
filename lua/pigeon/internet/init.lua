@@ -7,11 +7,11 @@ local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep 
 wifi_state = tostring(wifi_state[2])
 
 M.wifi_status = function()
-	local result = wifi_state
-	if result == "off" then
-		return internet.wifi.icons.disconnected
+	local result
+	if wifi_state == "off" then
+		result = internet.wifi.icons.disconnected
 	else
-		return internet.wifi.icons.connected
+		result = internet.wifi.icons.connected
 	end
 
 	return result
@@ -30,7 +30,7 @@ M.bit_rate = function()
 		local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
 		if signal and #signal > 0 then
 			result = tonumber(signal[1]) .. " " .. unit
-		else
+		elseif wifi_state == "off" then
 			result = " 󰪎"
 		end
 	end
@@ -44,8 +44,8 @@ command("PigeonToggleInternet", function()
 	internet.enabled = not internet.enabled
 end, {})
 
-if internet.enabled then
-	return M
-else
+if not internet.enabled then
 	print("󱗆 pigeon internet module is disabled")
 end
+
+return M
