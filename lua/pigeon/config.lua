@@ -2,7 +2,7 @@ local M = { options = {} }
 
 local defaults = {
   enabled = true,
-  os = "linux",           -- windows, osx
+  os = "linux",            -- windows, osx
   plugin_manager = "lazy", -- packer, paq, vim-plug
   callbacks = {
     killing_pigeon = nil,
@@ -30,6 +30,7 @@ local defaults = {
   },
   battery = {
     show_percentage = true,
+    enabled = true,
     show_status_text = true,
     view = {
       charge = {
