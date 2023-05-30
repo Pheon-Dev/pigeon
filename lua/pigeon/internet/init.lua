@@ -3,38 +3,22 @@ local command = vim.api.nvim_create_user_command
 
 local M = {}
 
+local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
+wifi_state = tostring(wifi_state[2])
+
 M.wifi_status = function()
-	local cmd
-	if vim.fn.has("win32") == 1 then
-		cmd = "ping -n 1 8.8.8.8 >nul 2>&1 && echo connected || echo disconnected"
-	else
-		cmd = "ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo connected || echo disconnected"
-	end
-
-	local job_id = vim.fn.jobstart(cmd, {
-		on_exit = function(_, code)
-			if code == 0 then
-				vim.g.wifi_state = "connected"
-			else
-				vim.g.wifi_state = "disconnected"
-			end
-		end,
-	})
-	vim.fn.jobwait({ job_id }, 0)
-
-	local wifi_state = vim.g.wifi_state or "unknown"
-
-	if wifi_state == "disconnected" then
+	local result = wifi_state
+	if result == "off" then
 		return internet.wifi.icons.disconnected
 	else
 		return internet.wifi.icons.connected
 	end
+
+	return result
 end
 
 M.wifi_essid = function()
-	local result = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
-	result = tostring(result[2])
-
+	local result = wifi_state
 	return result
 end
 
