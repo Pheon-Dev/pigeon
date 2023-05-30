@@ -1,4 +1,5 @@
 local internet = require("pigeon.config").options.internet
+local command = vim.api.nvim_create_user_command
 
 local M = {}
 
@@ -54,6 +55,10 @@ M.bit_rate = function()
 
 	return result
 end
+
+command("PigeonToggleInternet", function()
+	internet.enabled = not internet.enabled
+end, {})
 
 if internet.enabled then
 	return M
