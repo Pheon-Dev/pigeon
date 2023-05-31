@@ -162,6 +162,12 @@ end
 
 command("PigeonToggleBattery", function()
 	battery.enabled = not battery.enabled
+	if battery.enabled then
+		print("󱗆 pigeon battery module is enabled")
+	end
+	if not battery.enabled then
+		print("󱗆 pigeon battery module is disabled")
+	end
 end, {})
 
 if not battery.enabled then

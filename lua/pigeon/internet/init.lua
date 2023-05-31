@@ -43,6 +43,12 @@ end
 
 command("PigeonToggleInternet", function()
 	internet.enabled = not internet.enabled
+	if internet.enabled then
+		print("󱗆 pigeon internet module is enabled")
+	end
+	if not internet.enabled then
+		print("󱗆 pigeon internet module is disabled")
+	end
 end, {})
 
 if not internet.enabled then

@@ -17,6 +17,12 @@ end
 
 command("PigeonToggleDateTime", function()
 	datetime.enabled = not datetime.enabled
+if datetime.enabled then
+	print("󱗆 pigeon date and time module is enabled")
+end
+if not datetime.enabled then
+	print("󱗆 pigeon date and time module is disabled")
+end
 end, {})
 
 if not datetime.enabled then
