@@ -6,6 +6,7 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 > This plugin is currently in it's experimental stages. Expect some breaking changes.
 
 ![](/pigeon.png)
+![](/pigeon-offline.png)
 
 ***
 
