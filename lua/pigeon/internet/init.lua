@@ -2,7 +2,6 @@ local internet = require("pigeon.config").options.internet
 
 local M = {}
 
-
 M.wifi_status = function()
   local cmd = 'iwconfig 2>&1 | grep "ESSID:" | awk -F "ESSID:" \'{print $2}\' | tr -d \'"\''
   local job_id = vim.fn.jobstart(cmd, {
@@ -71,47 +70,35 @@ M.wifi_essid = function()
 end
 
 M.bit_rate = function()
-  local result = ""
   local unit = internet.signal.unit
 
-  local function fetch_signal_speed()
-    local cmd = 'iwconfig 2>&1 | grep "Bit Rate:" | awk -F "Bit Rate:" \'{print $2}\' | tr -d \'"\''
-    -- local signal = vim.fn.systemlist('iwconfig 2>&1 | grep -o "Bit Rate=.*" | grep -o "[0-9.]*"')
-    -- if signal and #signal > 0 then
-    --   result = tonumber(signal[1]) .. " " .. unit
-    -- else
-    --   result = " 󰪎"
-    -- end
+  local cmd
+  local mbps =
+  'iwconfig 2>&1 | grep "Bit Rate=" | awk -F "Bit Rate=" \'{print $2}\' | awk -F " " \'{print $1}\' | tr -d \'"\''
+  local dbm =
+  'iwconfig 2>&1 | grep "Tx-Power=" | awk -F "Tx-Power=" \'{print $2}\' | awk -F " " \'{print $1}\' | tr -d \'"\''
 
-    local job_id = vim.fn.jobstart(cmd, {
-      on_stdout = function(_, data, _)
-        local output = table.concat(data, "\n")
-
-        -- local wifi_status
-        if output and #output > 0 then
-          output = output:gsub("%s+", "") -- Remove whitespace
-          -- if output == "off/any" then
-          --   vim.g.wifi_essid = "offline"
-          -- else
-          --   vim.g.wifi_essid = output
-          -- end
-          result = output
-        else
-          result = "0 Mb/s"
-          -- vim.g.wifi_status = "unknown"
-        end
-
-        -- TODO: Do something with the wifi_status, such as updating the statusline
-      end,
-      stdout_buffered = true,
-    })
-
-    vim.fn.jobwait({ job_id }, 0)
+  if unit == "mbps" then
+    cmd = mbps
+  else
+    cmd = dbm
   end
+  local job_id = vim.fn.jobstart(cmd, {
+    on_stdout = function(_, data, _)
+      local output = table.concat(data, "\n")
+      output = output:gsub("%s+", "")   -- Remove whitespace
+      if output and #output > 0 then
+        vim.g.bit_rate = output .. unit
+      else
+    vim.g.bit_rate = " 󰪎"
+      end
+    end,
+    stdout_buffered = true,
+  })
 
-  fetch_signal_speed()
+  vim.fn.jobwait({ job_id }, 0)
 
-  return result
+  return vim.g.bit_rate
 end
 
 require("pigeon.commands.internet").internet_commands()
