@@ -88,7 +88,7 @@ M.bit_rate = function()
       local output = table.concat(data, "\n")
       output = output:gsub("%s+", "")   -- Remove whitespace
       if output and #output > 0 then
-        vim.g.bit_rate = output .. unit
+        vim.g.bit_rate = output .. " " .. unit
       else
     vim.g.bit_rate = " 󰪎"
       end
