@@ -17,7 +17,6 @@ M.wifi_status = function()
         else
           vim.g.wifi_status = "connected"
         end
-        print("󱗆 pigeon wifi status: " .. vim.g.wifi_status)
       else
         vim.g.wifi_status = "unknown"
       end
@@ -55,7 +54,6 @@ M.wifi_essid = function()
         else
           vim.g.wifi_essid = output
         end
-        print("󱗆 pigeon connected to: " .. vim.g.wifi_essid)
       else
         vim.g.wifi_status = "unknown"
       end
@@ -97,7 +95,6 @@ M.bit_rate = function()
           -- else
           --   vim.g.wifi_essid = output
           -- end
-          -- print("󱗆 pigeon connected to: " .. vim.g.wifi_essid)
           result = output
         else
           result = "0 Mb/s"
