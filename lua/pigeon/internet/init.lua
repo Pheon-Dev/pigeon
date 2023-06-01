@@ -24,6 +24,7 @@ M.wifi_status = function()
 			end
 
 			-- TODO: Do something with the wifi_status, such as updating the statusline
+			-- print("󱗆 pigeon wifi_status: " .. vim.g.wifi_status)
 		end,
 		stdout_buffered = true,
 	})
@@ -31,7 +32,7 @@ M.wifi_status = function()
 	vim.fn.jobwait({ job_id }, 0)
 	local result
 
-	if vim.g.wifi_state == "disconnected" then
+	if vim.g.wifi_status == "disconnected" then
 		result = internet.wifi.icons.disconnected
 	else
 		result = internet.wifi.icons.connected
