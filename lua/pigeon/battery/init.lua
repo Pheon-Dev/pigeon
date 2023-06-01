@@ -16,9 +16,6 @@ end
 
 
 function M.battery_capacity()
-  -- local capacity = vim.fn.system(cap)
-  -- capacity = capacity:gsub("\n", "")
-
   local status_job_id = vim.fn.jobstart(stat, {
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
@@ -48,23 +45,6 @@ function M.battery_capacity()
   })
 
   vim.fn.jobwait({ capacity_job_id }, 0)
-
-  -- local job_id = vim.fn.jobstart(cap, {
-  --   on_stdout = function(_, data, _)
-  --     local output = table.concat(data, "\n")
-  --
-  --     if output and #output > 0 then
-  --       output = output:gsub("%s+", "") -- Remove whitespace
-  --       vim.g.battery_capacity = output
-  --     end
-  --
-  --   end,
-  --   stdout_buffered = true,
-  -- })
-  --
-  -- vim.fn.jobwait({ job_id }, 0)
-  -- local status = vim.fn.system(stat)
-  -- status = status:gsub("\n", "")
 
   local result = vim.g.battery_status
   local charge = tonumber(vim.g.battery_capacity)
@@ -145,10 +125,22 @@ function M.battery_capacity()
 end
 
 function M.battery_status()
-  local status = vim.fn.system(stat)
-  status = status:gsub("\n", "")
+  local status_job_id = vim.fn.jobstart(stat, {
+    on_stdout = function(_, data, _)
+      local output = table.concat(data, "\n")
 
-  local result = status
+      if output and #output > 0 then
+        output = output:gsub("%s+", "") -- Remove whitespace
+        vim.g.battery_status = output
+      end
+
+    end,
+    stdout_buffered = true,
+  })
+
+  vim.fn.jobwait({ status_job_id }, 0)
+
+  local result = vim.g.battery_status
   result = tostring(result)
   local status_res = ""
 
@@ -178,10 +170,22 @@ function M.battery_status()
 end
 
 function M.battery_charge()
-  local capacity = vim.fn.system(cap)
-  capacity = capacity:gsub("\n", "")
+  local capacity_job_id = vim.fn.jobstart(cap, {
+    on_stdout = function(_, data, _)
+      local output = table.concat(data, "\n")
 
-  local result = capacity
+      if output and #output > 0 then
+        output = output:gsub("%s+", "") -- Remove whitespace
+        vim.g.battery_capacity = output
+      end
+
+    end,
+    stdout_buffered = true,
+  })
+
+  vim.fn.jobwait({ capacity_job_id }, 0)
+
+  local result = vim.g.battery_capacity
 
   if battery.show_percentage then
     return result .. battery.view.status.percentage.icon
