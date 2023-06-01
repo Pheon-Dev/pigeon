@@ -1,5 +1,4 @@
 local battery = require("pigeon.config").options.battery
-local command = vim.api.nvim_create_user_command
 
 local M = {}
 -- local cmd = 'acpi -b | grep -Po "[0-9]+%" | awk \'BEGIN { FS = "%" } { print $1 }\''
@@ -160,18 +159,6 @@ function M.battery_charge()
 	return result
 end
 
-command("PigeonToggleBattery", function()
-	battery.enabled = not battery.enabled
-	if battery.enabled then
-		print("󱗆 pigeon battery module is enabled")
-	end
-	if not battery.enabled then
-		print("󱗆 pigeon battery module is disabled")
-	end
-end, {})
-
-if not battery.enabled then
-	print("󱗆 pigeon battery module is disabled")
-end
+require("pigeon.commands.battery").battery_commands()
 
 return M
