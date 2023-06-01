@@ -8,7 +8,6 @@ M.wifi_status = function()
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
 
-      -- local wifi_status
       if output and #output > 0 then
         output = output:gsub("%s+", "") -- Remove whitespace
         if output == "off/any" then
@@ -20,7 +19,6 @@ M.wifi_status = function()
         vim.g.wifi_status = "unknown"
       end
 
-      -- TODO: Do something with the wifi_status, such as updating the statusline
     end,
     stdout_buffered = true,
   })
@@ -45,7 +43,6 @@ M.wifi_essid = function()
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
 
-      -- local wifi_status
       if output and #output > 0 then
         output = output:gsub("%s+", "") -- Remove whitespace
         if output == "off/any" then
@@ -57,15 +54,12 @@ M.wifi_essid = function()
         vim.g.wifi_status = "unknown"
       end
 
-      -- TODO: Do something with the wifi_status, such as updating the statusline
     end,
     stdout_buffered = true,
   })
 
   vim.fn.jobwait({ job_id }, 0)
 
-  -- local wifi_state = vim.fn.systemlist('iwconfig 2>&1 | grep -o "ESSID:.*" | grep -o "[Aa0-Zz9.]*"')
-  -- wifi_state = tostring(wifi_state[2])
   return vim.g.wifi_essid
 end
 
