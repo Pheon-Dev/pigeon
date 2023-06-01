@@ -18,7 +18,6 @@ M.wifi_status = function()
       else
         vim.g.wifi_status = "unknown"
       end
-
     end,
     stdout_buffered = true,
   })
@@ -53,7 +52,6 @@ M.wifi_essid = function()
       else
         vim.g.wifi_status = "unknown"
       end
-
     end,
     stdout_buffered = true,
   })
@@ -80,11 +78,11 @@ M.bit_rate = function()
   local job_id = vim.fn.jobstart(cmd, {
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
-      output = output:gsub("%s+", "")   -- Remove whitespace
+      output = output:gsub("%s+", "") -- Remove whitespace
       if output and #output > 0 then
         vim.g.bit_rate = output .. " " .. unit
       else
-    vim.g.bit_rate = " 󰪎"
+        vim.g.bit_rate = " 󰪎"
       end
     end,
     stdout_buffered = true,
