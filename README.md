@@ -2,7 +2,9 @@
 ![macOS](https://img.shields.io/badge/macOS-%23.svg?logo=apple&color=000000&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-%23.svg?logo=windows&color=0078D6&logoColor=white)
 
+<p align="center">
 <img src="https://www.ibs.it/images/9781666394030_0_536_0_75.jpg" alt="cher-ami" />
+</p>
 
 # Pigeon
 
