@@ -2,11 +2,13 @@
 ![macOS](https://img.shields.io/badge/macOS-%23.svg?logo=apple&color=000000&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-%23.svg?logo=windows&color=0078D6&logoColor=white)
 
+<h1 align="center">
+ Pigeon
+</h1>
+
 <p align="center">
 <img src="https://www.ibs.it/images/9781666394030_0_536_0_75.jpg" alt="cher-ami" />
 </p>
-
-# Pigeon
 
 <p align="center">
 This plugin adds to the current statusline and winbar by providing modules such as 
@@ -21,8 +23,10 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 > Polite reminder:
 > use the modules you only need, not all of them. Pigeons don't carry parcels.
 
-![](/pigeon.png)
-![](/pigeon-offline.png)
+<p align="center">
+<img src="/pigeon.png" alt="online" />
+<img src="/pigeon-offline.png" alt="offline" />
+</p>
 
 ***
 
