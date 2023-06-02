@@ -4,6 +4,11 @@ This plugin adds to the current statusline and winbar by providing modules such 
 wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 
 > This plugin is currently in it's experimental stages. Expect some breaking changes.
+> Please feel free to use it and file any issues and PRs whenever the pigeon is not
+> feeding correctly, doesn't home, gets lost, nests a lot and does nothing or gets shot.
+>
+> Polite reminder:
+> use the modules you only need, not all of them. Pigeons don't carry parcels.
 
 ![](/pigeon.png)
 ![](/pigeon-offline.png)
@@ -266,4 +271,5 @@ require("pigeon").setup({
 ```
 
 ## Contributions
-- PRs, Issues from contributors are welcome
+> no pigeons where harmed or killed in the making of this plugin
+- PRs and Issues are always welcome.
