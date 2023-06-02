@@ -1,8 +1,16 @@
-![](/cher-ami.jpg)
+![Linux](https://img.shields.io/badge/Linux-%23.svg?logo=linux&color=FCC624&logoColor=black)
+![macOS](https://img.shields.io/badge/macOS-%23.svg?logo=apple&color=000000&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-%23.svg?logo=windows&color=0078D6&logoColor=white)
+
+<img src="https://www.ibs.it/images/9781666394030_0_536_0_75.jpg" alt="cher-ami" />
+
 # Pigeon
 
+<p align="center">
 This plugin adds to the current statusline and winbar by providing modules such as 
 wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
+</p>
+
 
 > This plugin is currently in it's experimental stages. Expect some breaking changes.
 > Please feel free to use it and file any issues and PRs whenever the pigeon is not
