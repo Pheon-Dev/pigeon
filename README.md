@@ -1,3 +1,4 @@
+![](/cher-ami.jpg)
 # Pigeon
 
 This plugin adds to the current statusline and winbar by providing modules such as 
