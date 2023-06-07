@@ -1,5 +1,5 @@
 local ram = require("pigeon.config").options.ram
-local percentage = require("pigeon.config").options
+local percentage = require("pigeon.config").options.percentage
 
 local M = {}
 
@@ -48,9 +48,9 @@ M.perc_ram = function()
 
   result = vim.g.perc_ram
 
-	if ram.show_percentage then
-		return result .. percentage.icon
-	end
+  if ram.show_percentage then
+    return result .. percentage.icon
+  end
   return ""
 end
 

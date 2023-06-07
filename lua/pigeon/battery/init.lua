@@ -1,5 +1,5 @@
 local battery = require("pigeon.config").options.battery
-local percentage = require("pigeon.config").options
+local percentage = require("pigeon.config").options.percentage
 
 local M = {}
 
