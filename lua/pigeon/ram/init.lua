@@ -80,6 +80,6 @@ end
 
 M.ram_icon = ram.icon
 
-require("pigeon.commands.ram").internet_commands()
+require("pigeon.commands.ram").ram_commands()
 
 return M
