@@ -27,9 +27,25 @@ M.total_ram = function()
 end
 
 M.perc_ram = function()
+  local cmd = "free | awk '/Mem/{printf(\"%d\"), $3/$2*100}'"
+  local job_id = vim.fn.jobstart(cmd, {
+    on_stdout = function(_, data, _)
+      local output = table.concat(data, "\n")
+
+      if output and #output > 0 then
+        output = output:gsub("%s+", "") -- Remove whitespace
+        vim.g.perc_ram = output
+      else
+        vim.g.perc_ram = "0"
+      end
+    end,
+    stdout_buffered = true,
+  })
+
+  vim.fn.jobwait({ job_id }, 0)
   local result
 
-  result = vim.g.used_ram * 100 / vim.g.total_ram
+  result = vim.g.perc_ram
 
   return result
 end
