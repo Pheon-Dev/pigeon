@@ -1,4 +1,5 @@
 local battery = require("pigeon.config").options.battery
+local percentage = require("pigeon.config").options
 
 local M = {}
 
@@ -177,7 +178,7 @@ function M.battery_charge()
 	local result = vim.g.battery_capacity
 
 	if battery.show_percentage then
-		return result .. battery.view.status.percentage.icon
+		return result .. percentage.icon
 	end
 	return result
 end
