@@ -11,6 +11,7 @@ local defaults = {
     icon = "󱌖 ",
   },
   hostname = {
+    enabled = true,
     icon = " "
   },
   datetime = {
