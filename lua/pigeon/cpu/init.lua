@@ -5,7 +5,7 @@ local M = {}
 
 M.cpu_load = function()
   local cmd_last = "head -n1 /proc/stat"
-  local cmd_now = "sleep 0.05 && head -n1 /proc/stat | awk '{print $2}'"
+  local cmd_now = "sleep 0.05 && head -n1 /proc/stat"
   local last_job_id = vim.fn.jobstart(cmd_last, {
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
@@ -48,11 +48,11 @@ M.cpu_load = function()
 
   vim.fn.jobwait({ now_job_id }, 0)
 
-  vim.g.cpu_delta = vim.g.now_cpu_read - vim.g.last_cpu_read
-  vim.g.cpu_idle = vim.g.now_cpu_idle - vim.g.last_cpu_idle
-  vim.g.cpu_used = vim.g.now_cpu_delta - vim.g.cpu_idle
+  local cpu_delta = vim.g.now_cpu_read - vim.g.last_cpu_read
+  local cpu_idle = vim.g.now_cpu_idle - vim.g.last_cpu_idle
+  local cpu_used = cpu_delta - cpu_idle
 
-  local result = 100 * vim.g.cpu_used / vim.g.cpu_delta
+  local result = 100 * cpu_used / cpu_delta
 
   return result
 end
