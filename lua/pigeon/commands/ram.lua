@@ -23,9 +23,9 @@ function M.ram_commands()
 		end
 	end, {})
 
-	if not ram.enabled then
-		print("󱗆 pigeon ram module is disabled")
-	end
+	-- if not ram.enabled then
+	-- 	print("󱗆 pigeon ram module is disabled")
+	-- end
 end
 
 return M

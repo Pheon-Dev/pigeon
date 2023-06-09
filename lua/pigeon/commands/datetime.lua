@@ -47,9 +47,9 @@ function M.datetime_commands()
 		end
 	end, {})
 
-	if not datetime.enabled then
-		print("󱗆 pigeon date and time module is disabled")
-	end
+	-- if not datetime.enabled then
+	-- 	print("󱗆 pigeon date and time module is disabled")
+	-- end
 end
 
 return M

@@ -13,9 +13,9 @@ function M.internet_commands()
 		end
 	end, {})
 
-	if not internet.enabled then
-		print("󱗆 pigeon internet module is disabled")
-	end
+	-- if not internet.enabled then
+	-- 	print("󱗆 pigeon internet module is disabled")
+	-- end
 end
 
 return M

@@ -14,9 +14,9 @@ function M.battery_commands()
 		end
 	end, {})
 
-	if not battery.enabled then
-		print("󱗆 pigeon battery module is disabled")
-	end
+	-- if not battery.enabled then
+	-- 	print("󱗆 pigeon battery module is disabled")
+	-- end
 end
 
 return M
