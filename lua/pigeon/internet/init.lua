@@ -45,7 +45,7 @@ M.wifi_essid = function()
       if output and #output > 0 then
         output = output:gsub("%s+", "") -- Remove whitespace
         if output == "off/any" then
-          vim.g.wifi_essid = "offline"
+          vim.g.wifi_essid = ""
         else
           vim.g.wifi_essid = output
         end
@@ -82,7 +82,7 @@ M.bit_rate = function()
       if output and #output > 0 then
         vim.g.bit_rate = output .. " " .. unit
       else
-        vim.g.bit_rate = " 󰪎"
+        vim.g.bit_rate = " …"
       end
     end,
     stdout_buffered = true,
