@@ -252,7 +252,7 @@ require("pigeon").setup({
       },
       bit_rate = {
         enabled = true,
-        unit = "mbps",
+        unit = "mbps", -- or dbm
       }
     },
 	},
