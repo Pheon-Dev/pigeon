@@ -63,7 +63,7 @@ function M.wifi()
   end
 
 
-  result = internet.status.show and internet.essid.show and internet.bit_rate.show and
+  result = internet.status.enabled and internet.essid.enabled and internet.bit_rate.enabled and
       result .. " " .. essid .. " " .. bit_rate or result .. " " .. essid or result
   return result
 end
