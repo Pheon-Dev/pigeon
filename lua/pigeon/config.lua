@@ -76,13 +76,20 @@ local defaults = {
 				disconnected = "󰕑 ",
 			},
 		},
-		wifi = {
-			enabled = true,
-			icons = {
-				connected = "󰤪",
-				disconnected = "󰤫",
-			},
-		},
+    wifi = {
+      status = {
+        connected = "󰤪",
+        disconnected = "󰤫",
+        enabled = true,
+      },
+      essid = {
+        enabled = true,
+      },
+      bit_rate = {
+        enabled = true,
+        unit = "mbps",
+      }
+    },
 	},
 	volume = {
 		enabled = true,
