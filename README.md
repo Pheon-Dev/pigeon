@@ -46,7 +46,7 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
                     killing_pigeon = nil,
                     respawning_pigeon = nil,
                 },
-                ...
+                -- more config options here
             }
 
             require("pigeon").setup(config)
@@ -59,14 +59,10 @@ wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
 
 ```lua
 -- battery
-require("pigeon.battery").battery_capacity()
-require("pigeon.battery").battery_charge()
-require("pigeon.battery").battery_status()
+require("pigeon.battery").battery()
 
 -- internet
-require("pigeon.internet").wifi_status()
-require("pigeon.internet").wifi_essid()
-require("pigeon.internet").bit_rate()
+require("pigeon.internet").wifi()
 
 -- date and time
 require("pigeon.datetime").current_date()
@@ -85,14 +81,10 @@ sections = {
           {
             function()
                 local enabled = require("pigeon.config").options.battery.enabled
-                local battery = require("pigeon.battery")
-
-                local capacity = battery.battery_capacity()
-                local charge = battery.battery_charge()
-                local status = battery.battery_status()
+                local battery = require("pigeon.battery").battery()
 
                 if enabled then
-                  return status .. capacity .. charge
+                  return battery
                 else
                   return ""
                 end
@@ -249,13 +241,20 @@ require("pigeon").setup({
 				disconnected = "󰕑 ",
 			},
 		},
-		wifi = {
-			enabled = true,
-			icons = {
-				connected = "󰤪",
-				disconnected = "󰤫",
-			},
-		},
+    wifi = {
+      status = {
+        connected = "󰤪",
+        disconnected = "󰤫",
+        enabled = true,
+      },
+      essid = {
+        enabled = true,
+      },
+      bit_rate = {
+        enabled = true,
+        unit = "mbps",
+      }
+    },
 	},
 	volume = {
 		enabled = true,
