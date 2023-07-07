@@ -1,86 +1,26 @@
-local internet = require("pigeon.config").options.internet
+local internet = require("pigeon.config").options.internet.wifi
 
 local M = {}
 
-M.wifi_status = function()
+function M.wifi()
   local cmd = 'iwconfig 2>&1 | grep "ESSID:" | awk -F "ESSID:" \'{print $2}\' | tr -d \'"\''
-  local job_id = vim.fn.jobstart(cmd, {
-    on_stdout = function(_, data, _)
-      local output = table.concat(data, "\n")
-
-      if output and #output > 0 then
-        output = output:gsub("%s+", "") -- Remove whitespace
-        if output == "off/any" then
-          vim.g.wifi_status = "disconnected"
-        else
-          vim.g.wifi_status = "connected"
-        end
-      else
-        vim.g.wifi_status = "unknown"
-      end
-    end,
-    stdout_buffered = true,
-  })
-
-  vim.fn.jobwait({ job_id }, 0)
-  local result
-
-  if vim.g.wifi_status == "disconnected" then
-    result = internet.wifi.icons.disconnected
-  elseif vim.g.wifi_status == "connected" then
-    result = internet.wifi.icons.connected
-  elseif vim.g.wifi_status == "unknown" then
-    result = ""
-  end
-
-  return result
-end
-
-M.wifi_essid = function()
-  local cmd = 'iwconfig 2>&1 | grep "ESSID:" | awk -F "ESSID:" \'{print $2}\' | tr -d \'"\''
-  local job_id = vim.fn.jobstart(cmd, {
-    on_stdout = function(_, data, _)
-      local output = table.concat(data, "\n")
-
-      if output and #output > 0 then
-        output = output:gsub("%s+", "") -- Remove whitespace
-        if output == "off/any" then
-          vim.g.wifi_essid = ""
-        else
-          vim.g.wifi_essid = output
-        end
-      else
-        vim.g.wifi_status = "unknown"
-      end
-    end,
-    stdout_buffered = true,
-  })
-
-  vim.fn.jobwait({ job_id }, 0)
-
-  return vim.g.wifi_essid
-end
-
-M.bit_rate = function()
-  local unit = internet.signal.unit
-
-  local cmd
+  local bit
   local mbps =
   'iwconfig 2>&1 | grep "Bit Rate=" | awk -F "Bit Rate=" \'{print $2}\' | awk -F " " \'{print $1}\' | tr -d \'"\''
   local dbm =
   'iwconfig 2>&1 | grep "Tx-Power=" | awk -F "Tx-Power=" \'{print $2}\' | awk -F " " \'{print $1}\' | tr -d \'"\''
 
-  if unit == "mbps" then
-    cmd = mbps
+  if internet.bit_rate.unit == "mbps" then
+    bit = mbps
   else
-    cmd = dbm
+    bit = dbm
   end
-  local job_id = vim.fn.jobstart(cmd, {
+  local bit_job_id = vim.fn.jobstart(bit, {
     on_stdout = function(_, data, _)
       local output = table.concat(data, "\n")
       output = output:gsub("%s+", "") -- Remove whitespace
       if output and #output > 0 then
-        vim.g.bit_rate = output .. " " .. unit
+        vim.g.bit_rate = output .. " " .. internet.bit_rate.unit
       else
         vim.g.bit_rate = " …"
       end
@@ -88,9 +28,44 @@ M.bit_rate = function()
     stdout_buffered = true,
   })
 
-  vim.fn.jobwait({ job_id }, 0)
+  vim.fn.jobwait({ bit_job_id }, 0)
 
-  return vim.g.bit_rate
+  local job_id = vim.fn.jobstart(cmd, {
+    on_stdout = function(_, data, _)
+      local output = table.concat(data, "\n")
+
+      if output and #output > 0 then
+        output = output:gsub("%s+", "") -- Remove whitespace
+        if output == "off/any" then
+          vim.g.essid = ""
+        else
+          vim.g.essid = output
+        end
+      else
+        vim.g.essid = "unknown"
+      end
+    end,
+    stdout_buffered = true,
+  })
+
+  vim.fn.jobwait({ job_id }, 0)
+  local result, essid, bit_rate
+
+  if vim.g.essid ~= nil then essid = tostring(vim.g.essid) else essid = "" end
+  if vim.g.bit_rate ~= nil then bit_rate = tostring(vim.g.bit_rate) else bit_rate = "" end
+
+  if essid == "" then
+    result = internet.status.disconnected
+  elseif essid == "unknown" then
+    result = ""
+  else
+    result = internet.status.connected
+  end
+
+
+  result = internet.status.show and internet.essid.show and internet.bit_rate.show and
+      result .. " " .. essid .. " " .. bit_rate or result .. " " .. essid or result
+  return result
 end
 
 require("pigeon.commands.internet").internet_commands()
