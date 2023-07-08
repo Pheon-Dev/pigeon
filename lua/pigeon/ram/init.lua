@@ -79,7 +79,7 @@ function M.ram()
     if vim.g.used_ram == nil then return "" end
     result = tostring(vim.g.used_ram)
 
-    return result
+    return ram.icon .. " " .. result
   end
 
   local total_ram = M.total_ram()
