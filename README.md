@@ -68,6 +68,15 @@ require("pigeon.internet").wifi()
 require("pigeon.datetime").current_date()
 require("pigeon.datetime").current_day()
 require("pigeon.datetime").current_time()
+
+-- ram
+require("pigeon.internet").ram()
+
+-- hostname
+require("pigeon.internet").hostname()
+
+-- cpu
+require("pigeon.internet").cpu() -- still working on it
 ```
 
 ## Usage
