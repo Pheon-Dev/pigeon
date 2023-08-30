@@ -12,7 +12,7 @@
 
 <p align="center">
 This plugin adds to the current statusline and winbar by providing modules such as 
-wifi, battery, volume, date, time, cpu, ram, storage, temperatures etc
+wifi, battery, volume, date, time, cpu, ram and storage.
 </p>
 
 
