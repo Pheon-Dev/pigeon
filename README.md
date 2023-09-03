@@ -15,7 +15,6 @@ This plugin adds to the current statusline and winbar by providing modules such 
 wifi, battery, volume, date, time, cpu, ram and storage.
 </p>
 
-
 > This plugin is currently in it's experimental stages. Expect some breaking changes.
 > Please feel free to use it and file any issues and PRs whenever the pigeon is not
 > feeding correctly, doesn't home, gets lost, nests a lot and does nothing or [gets shot](https://en.wikipedia.org/wiki/Cher_Ami).
@@ -28,9 +27,10 @@ wifi, battery, volume, date, time, cpu, ram and storage.
 <img src="/pigeon-offline.png" alt="offline" />
 </p>
 
-***
+---
 
 ## Installation
+
 ### Lazy
 
 ```lua
@@ -70,13 +70,16 @@ require("pigeon.datetime").current_day()
 require("pigeon.datetime").current_time()
 
 -- ram
-require("pigeon.internet").ram()
+require("pigeon.ram").ram()
 
 -- hostname
-require("pigeon.internet").hostname()
+require("pigeon.hostname").hostname()
 
 -- cpu
-require("pigeon.internet").cpu() -- still working on it
+require("pigeon.cpu").cpu() -- still working on it
+
+-- volume
+require("pigeon.volume").volume()
 ```
 
 ## Usage
@@ -105,33 +108,37 @@ sections = {
 ...
 ```
 
-***
+---
 
 ## Commands
 
-* `PigeonToggle`: Toggle the entire plugin by either killing the pigeon or respawning it
+- `PigeonToggle`: Toggle the entire plugin by either killing the pigeon or respawning it
 
 ### Battery Module
-* `PigeonToggleBattery`: Toggle the battery modules and its submodules
-* `PigeonToggleBatteryStatus`: Toggle the battery status submodule
-* `PigeonToggleBatteryCapacity`: Toggle the battery capacity icon submodule
-* `PigeonToggleBatteryCharge`: Toggle the battery charge and it's percentage submodule
+
+- `PigeonToggleBattery`: Toggle the battery modules and its submodules
+- `PigeonToggleBatteryStatus`: Toggle the battery status submodule
+- `PigeonToggleBatteryCapacity`: Toggle the battery capacity icon submodule
+- `PigeonToggleBatteryCharge`: Toggle the battery charge and it's percentage submodule
 
 ### Internet Module
-* `PigeonToggleInternet`: Toggle the internet module and its submodules
-* `PigeonToggleEthernet`: Toggle the ethernet submodule
-* `PigeonToggleWifi`: Toggle the wifi icon submodule
-* `PigeonToggleBitRate`: Toggle the bitrate submodule
-* `PigeonToggleEssid`: Toggle the ESSID submodule(wifi name)
+
+- `PigeonToggleInternet`: Toggle the internet module and its submodules
+- `PigeonToggleEthernet`: Toggle the ethernet submodule
+- `PigeonToggleWifi`: Toggle the wifi icon submodule
+- `PigeonToggleBitRate`: Toggle the bitrate submodule
+- `PigeonToggleEssid`: Toggle the ESSID submodule(wifi name)
 
 ### Date and Time Module
-* `PigeonToggleDateTime`: Toggle the date and time modules and its submodules
-* `PigeonToggleDate`: Toggle the date submodule
-* `PigeonToggleTime`: Toggle the time submodule
-* `PigeonToggleDay`: Toggle the day submodule
+
+- `PigeonToggleDateTime`: Toggle the date and time modules and its submodules
+- `PigeonToggleDate`: Toggle the date submodule
+- `PigeonToggleTime`: Toggle the time submodule
+- `PigeonToggleDay`: Toggle the day submodule
 
 ### Audio Module
-* `PigeonToggleVolume`: Toggle audio module
+
+- `PigeonToggleVolume`: Toggle audio module
 
 ```lua
 local map = vim.api.nvim_set_keymap
@@ -144,39 +151,39 @@ map("n", "<leader>pb", ":PigeonToggleBattery<CR>", { silent = true, desc = "Togg
 
 ## Modules
 
-*   \[x] battery
-    *   \[x] capacity icon
-    *   \[x] charge percentage
-    *   \[x] status i.e charging, discharging
-    *   \[x] animated battery icon while charging
-    *   \[ ] toggle
-*   \[x] internet
-    *   \[x] wifi connection
-        *   \[x] wifi essid
-    *   \[ ] ethernet connection
-    *   \[x] internet connection speed
-        *   \[x] bit rate
-    *   \[ ] toggle
-*   \[x] date and time
-    *   \[x] current date
-    *   \[x] current time
-    *   \[x] current day
-    *   \[ ] toggle
-*   \[ ] cpu
-    *   System processor usage
-    *   \[ ] toggle
-*   \[ ] ram
-    *   System memory usage
-    *   \[ ] toggle
-*   \[ ] updates
-    *   Neovim plugins updates
-    *   \[ ] toggle
-*   \[ ] music
-    *   current music playing
-    *   \[ ] toggle
-*   \[ ] volume
-    *   audio volume
-    *   \[ ] toggle
+- \[x] battery
+  - \[x] capacity icon
+  - \[x] charge percentage
+  - \[x] status i.e charging, discharging
+  - \[x] animated battery icon while charging
+  - \[ ] toggle
+- \[x] internet
+  - \[x] wifi connection
+    - \[x] wifi essid
+  - \[ ] ethernet connection
+  - \[x] internet connection speed
+    - \[x] bit rate
+  - \[ ] toggle
+- \[x] date and time
+  - \[x] current date
+  - \[x] current time
+  - \[x] current day
+  - \[ ] toggle
+- \[ ] cpu
+  - System processor usage
+  - \[ ] toggle
+- \[x] ram
+  - System memory usage
+  - \[x] toggle
+- \[ ] updates
+  - Neovim plugins updates
+  - \[ ] toggle
+- \[ ] music
+  - current music playing
+  - \[ ] toggle
+- \[x] volume
+  - audio volume
+  - \[x] toggle
 
 ## Configuration
 
@@ -297,5 +304,7 @@ require("pigeon").setup({
 ```
 
 ## Contributions
+
 > no pigeons where harmed or killed in the making of this plugin
+
 - PRs and Issues are always welcome.
