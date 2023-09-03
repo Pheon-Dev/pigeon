@@ -49,7 +49,7 @@ function M.battery()
   local result, capacity
   if vim.g.battery_status ~= nil then result = tostring(vim.g.battery_status) else result = "Fetching" end
   if vim.g.battery_capacity ~= nil then capacity = tostring(vim.g.battery_capacity) .. " 󰏰" else capacity = "" end
-	local icon = battery.view.charge
+  local icon = battery.view.charge
 
   local icons = {
     icon.zeros.icon,

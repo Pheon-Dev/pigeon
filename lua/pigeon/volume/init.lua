@@ -68,8 +68,9 @@ function M.volume()
   else
     result = result .. "..."
   end
+  local muted = vim.g.mute == "1" and true or false
 
-  return vim.g.mute and "Muted" or result
+  return muted and "󰖁" or result
 end
 
 require("pigeon.commands.volume").volume_commands()
