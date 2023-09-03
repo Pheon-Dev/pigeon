@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-This plugin adds to the current statusline and winbar by providing modules such as 
+This plugin adds to the current statusline and winbar by providing modules such as
 wifi, battery, volume, date, time, cpu, ram and storage.
 </p>
 
@@ -34,7 +34,7 @@ wifi, battery, volume, date, time, cpu, ram and storage.
 ### Lazy
 
 ```lua
-    { 
+    {
         "Pheon-Dev/pigeon",
         event = "",
         config = function()
@@ -129,6 +129,9 @@ sections = {
 * `PigeonToggleDate`: Toggle the date submodule
 * `PigeonToggleTime`: Toggle the time submodule
 * `PigeonToggleDay`: Toggle the day submodule
+
+### Audio Module
+* `PigeonToggleVolume`: Toggle audio module
 
 ```lua
 local map = vim.api.nvim_set_keymap
