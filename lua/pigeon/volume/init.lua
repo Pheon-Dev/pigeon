@@ -8,6 +8,7 @@ function M.volume_job()
     cmd_right = "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'"
     cmd_left = "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }'"
     mute = "amixer get Master | sed 5q | grep -q '[on]'"
+    -- mute = "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $4 }'"
   elseif vim.fn.executable("pulsemixer") == 1 then
     cmd_right = "pulsemixer --get-volume | awk -F ' ' '{ print $1 }'"
     cmd_left = "pulsemixer --get-volume | awk -F ' ' '{ print $2 }'"
@@ -54,24 +55,41 @@ function M.volume_job()
   vim.fn.jobwait({ mute_job_id }, 0)
 end
 
+function M.select_icon(volume_level)
+  local lvl = tonumber(volume_level)
+  if lvl < 33 then
+    return volume.icons.low
+  elseif lvl >= 33 and lvl < 66 then
+    return volume.icons.medium
+  else
+    return volume.icons.high
+  end
+end
+
 function M.volume()
   M.volume_job()
-  local result = volume.icon .. " "
+  local result = ""
   if vim.g.volume_left then
-    result = result .. vim.g.volume_left .. " 󰏰"
+    result = result .. M.select_icon(vim.g.volume_left) .. " "
+    if volume.show_percentage then
+      result = result .. vim.g.volume_left .. " 󰏰"
+    end
   else
     result = result .. "..."
   end
 
   result = result .. "  "
   if vim.g.volume_right then
-    result = result .. vim.g.volume_right .. " 󰏰"
+    result = result .. M.select_icon(vim.g.volume_right) .. " "
+    if volume.show_percentage then
+      result = result .. vim.g.volume_right .. " 󰏰"
+    end
   else
     result = result .. "..."
   end
   local muted = vim.g.mute == "1" and true or false
 
-  return muted and "󰖁" or result
+  return muted and volume.icons.mute or result
 end
 
 require("pigeon.commands.volume").volume_commands()

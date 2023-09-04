@@ -204,12 +204,12 @@ require("pigeon").setup({
 			enabled = true,
 			format = "%H:%M",
 			posttext = "hrs",
-			icon = " ",
+			icon = "󰃰 ",
 		},
 		day = {
 			enabled = true,
 			format = "%A",
-			icon = " ",
+			icon = "󰃶 ",
 		},
 		date = {
 			enabled = true,
@@ -278,7 +278,12 @@ require("pigeon").setup({
 	volume = {
 		enabled = true,
 		show_percentage = false,
-		icon = "󱄠",
+		icons = {
+			low = "󰕿",
+			medium = "󰖀",
+			high = "󰕾",
+			mute = "󰝟",
+		},
 	},
 	temperature = {
 		enabled = true,

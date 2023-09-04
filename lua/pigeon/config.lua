@@ -12,7 +12,7 @@ local defaults = {
 	},
 	hostname = {
 		enabled = true,
-		icon = " ",
+		icon = " ",
 	},
 	datetime = {
 		enabled = true,
@@ -20,12 +20,12 @@ local defaults = {
 			enabled = true,
 			format = "%H:%M",
 			posttext = "hrs",
-			icon = " ",
+			icon = "󰃰 ",
 		},
 		day = {
 			enabled = true,
 			format = "%A",
-			icon = " ",
+			icon = "󰃶 ",
 		},
 		date = {
 			enabled = true,
@@ -76,25 +76,30 @@ local defaults = {
 				disconnected = "󰕑 ",
 			},
 		},
-    wifi = {
-      status = {
-        connected = "󰤪",
-        disconnected = "󰤫",
-        enabled = true,
-      },
-      essid = {
-        enabled = true,
-      },
-      bit_rate = {
-        enabled = true,
-        unit = "mbps",
-      }
-    },
+		wifi = {
+			status = {
+				connected = "󰤪",
+				disconnected = "󰤫",
+				enabled = true,
+			},
+			essid = {
+				enabled = true,
+			},
+			bit_rate = {
+				enabled = true,
+				unit = "mbps",
+			},
+		},
 	},
 	volume = {
 		enabled = true,
-		show_percentage = false,
-		icon = "󱄠",
+		show_percentage = true,
+		icons = {
+			low = "󰕿",
+			medium = "󰖀",
+			high = "󰕾",
+			mute = "󰖁",
+		},
 	},
 	temperature = {
 		enabled = true,
