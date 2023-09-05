@@ -7,8 +7,7 @@ function M.volume_job()
   if vim.fn.executable("amixer") == 1 then
     cmd_right = "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'"
     cmd_left = "amixer sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }'"
-    mute = "amixer get Master | sed 5q | grep -q '[on]'"
-    -- mute = "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $4 }'"
+    mute = "amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $4 }'"
   elseif vim.fn.executable("pulsemixer") == 1 then
     cmd_right = "pulsemixer --get-volume | awk -F ' ' '{ print $1 }'"
     cmd_left = "pulsemixer --get-volume | awk -F ' ' '{ print $2 }'"
